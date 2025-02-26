@@ -1,0 +1,36 @@
+
+# Ignore Python cache files
+__pycache__/
+*.pyo
+
+# Ignore virtual environment directories
+venv/
+env/
+
+# Ignore IDE specific files
+.idea/
+.vscode/
+
+# Ignore Dockerfile and docker-compose files
+Dockerfile
+docker-compose.yml
+
+# Ignore environment variable files
+.env
+
+# Ignore database files
+*.db
+
+# Ignore logs
+*.log
+
+# Ignore compiled files
+*.so
+*.o
+*.a
+*.out
+
+# Ignore any other files or directories you want to exclude
+node_modules/
+dist/
+build/
