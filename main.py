@@ -7,10 +7,10 @@ from sqlalchemy.orm import Session
 from sqlalchemy.exc import IntegrityError, SQLAlchemyError
 from typing import List
 
-from app.database import SessionLocal, engine
-from app.models import Base, User, Book
-from app.schemas import UserCreate, Token, BookCreate, BookSchema, BookUpdate
-from app.auth import (
+from database import SessionLocal, engine
+from models import Base, User, Book
+from schemas import UserCreate, Token, BookCreate, BookSchema, BookUpdate
+from auth import (
     get_password_hash, verify_password, create_access_token,
     get_current_user, ACCESS_TOKEN_EXPIRE_MINUTES
 )

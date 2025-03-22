@@ -1,5 +1,5 @@
 from typing import Optional
-from pydantic import BaseModel, Field, validator, field_validator
+from pydantic import BaseModel, Field, field_validator
 
 
 class UserCreate(BaseModel):
@@ -23,7 +23,8 @@ class BookCreate(BaseModel):
     author: str = Field(..., min_length=1, max_length=100)
     isbn: str = Field(..., min_length=10, max_length=17)
 
-    @validator('isbn')
+    @classmethod
+    @field_validator('isbn')
     def validate_isbn(cls, v):
         # Remove hyphens and spaces for validation
         v_clean = v.replace('-', '').replace(' ', '')
@@ -35,15 +36,16 @@ class BookCreate(BaseModel):
 class BookSchema(BookCreate):
     id: int
 
-    class Config:
-        from_attributes = True
+    model_config = {"from_attributes": True}  # Updated Config syntax
+
 
 class BookUpdate(BaseModel):
     title: Optional[str] = Field(None, min_length=1, max_length=200)
     author: Optional[str] = Field(None, min_length=1, max_length=100)
     isbn: Optional[str] = Field(None, min_length=10, max_length=17)
 
-    @validator('isbn')
+    @classmethod
+    @field_validator('isbn')
     def validate_isbn(cls, v):
         if v is None:
             return v
